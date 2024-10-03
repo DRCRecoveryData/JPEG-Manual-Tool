@@ -55,6 +55,6 @@ output_folder = 'Repaired'
 
 # Process each encrypted JPEG file in the specified folder
 for filename in os.listdir(folder_path):
-    if filename.lower().endswith('.jpg') or filename.lower().endswith('.jpeg'):
+    if (filename.lower().startswith(('jpg.', 'jpeg.'))):
         encrypted_jpeg_path = os.path.join(folder_path, filename)
         repair_jpeg(reference_jpeg, encrypted_jpeg_path, output_folder)
