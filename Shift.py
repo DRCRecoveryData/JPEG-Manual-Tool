@@ -35,14 +35,14 @@ def shift_mcu(jpg_file):
     repaired_folder = os.path.join(os.path.dirname(jpg_file), "Repaired")
     os.makedirs(repaired_folder, exist_ok=True)  # Create the Repaired folder if it does not exist
 
-    # Save the cropped image to the Repaired folder
+    # Save the cropped image to the Repaired folder with the same name
     cropped_image_path = os.path.join(repaired_folder, os.path.basename(jpg_file))
     output_img = Image.fromarray(data_cropped)
     output_img.save(cropped_image_path, "JPEG")
     print(f"Cropped image saved to: {cropped_image_path}")
 
     # Call jpegrepair.exe with the detected adjusted insert value
-    output_repaired_path = os.path.join(repaired_folder, "repaired_" + os.path.basename(jpg_file))
+    output_repaired_path = os.path.join(repaired_folder, os.path.basename(jpg_file))
     command = f"jpegrepair.exe \"{cropped_image_path}\" \"{output_repaired_path}\" insert {insert_value}"
     print(f"Running command: {command}")
 
